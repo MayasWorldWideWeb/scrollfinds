@@ -1,7 +1,6 @@
 /**
  * ============================================================
- *  YOUR PRODUCT CATALOG — this is the only file you need to
- *  edit to add, remove, or update products.
+ *  YOUR PRODUCT CATALOG — the only file you need to edit.
  * ============================================================
  *
  * TO ADD A PRODUCT:
@@ -10,18 +9,38 @@
  *   3. Paste YOUR affiliate link into `affiliateUrl`.
  *   4. Save. The site updates automatically.
  *
- * Products here sit in the $20-80 range and lean toward TikTok
- * Shop, which pays 5-20% vs Amazon's 1-4%. Their `affiliateUrl`
- * is empty on purpose — any product without a link shows a
- * "Link needed" state in dev and is stripped from the production
- * build, so you can never publish a dead link by accident.
+ * ------------------------------------------------------------
+ *  HOW THIS CATALOG IS ORGANIZED (important)
+ * ------------------------------------------------------------
+ * Your TikTok Shop account is Bronze-tier and blocked from
+ * beauty devices, health/wellness devices, and electronics.
+ * Skincare IS open to you, and it pays the most (18-20%).
+ *
+ * So products are split into two groups:
+ *
+ *   GROUP 1 — TikTok Shop eligible (skincare, home, pets, car,
+ *   fitness). These pay 10-20%. This is where your money is.
+ *
+ *   GROUP 2 — TikTok-blocked. These are NOT deleted; they're
+ *   routed to Temu / AliExpress / Amazon instead, which pay
+ *   less (4-10%) but keep the product on your site.
+ *
+ * When you level up and a category unlocks, change that
+ * product's `retailer` to 'TikTok Shop', raise its
+ * `commissionPct`, and swap in the new link. Nothing else
+ * needs to change.
+ * ------------------------------------------------------------
+ *
+ * Products with an empty `affiliateUrl` show in dev but are
+ * stripped from the production build, so you can never publish
+ * a dead link by accident.
  */
 
 export type Retailer = 'TikTok Shop' | 'Amazon' | 'Temu' | 'AliExpress'
 
 export type Category =
+  | 'Skincare'
   | 'Home & Kitchen'
-  | 'Beauty'
   | 'Tech'
   | 'Fitness'
   | 'Pets'
@@ -46,75 +65,93 @@ export type Product = {
   emoji: string
   /** Shows a "Trending" flame badge and sorts it to the top. */
   trending?: boolean
-  /**
-   * Your commission rate as a percentage (e.g. 12 = 12%).
-   * Powers the earnings estimator in `npm run earnings`.
-   * Typical: TikTok Shop 5-20%, Amazon 1-4%, AliExpress 3-9%.
-   */
+  /** Your commission rate, e.g. 12 = 12%. Powers `npm run earnings`. */
   commissionPct: number
+  /**
+   * Set to true for products your TikTok Shop tier currently blocks.
+   * Purely a note to yourself — flip it to false and change `retailer`
+   * to 'TikTok Shop' once the category unlocks.
+   */
+  tiktokBlocked?: boolean
 }
 
 export const categories: Category[] = [
+  'Skincare',
   'Home & Kitchen',
-  'Beauty',
-  'Tech',
-  'Fitness',
   'Pets',
   'Car',
+  'Fitness',
+  'Tech',
 ]
 
 export const products: Product[] = [
-  // ---------------------------------------------------------------- Beauty
+  // ===========================================================
+  // GROUP 1 — TIKTOK SHOP ELIGIBLE. Your highest-paying lane.
+  // ===========================================================
+
+  // ------------------------------------------- Skincare (18-20%)
   {
-    id: 'red-light-wand',
-    name: 'Red Light Therapy Wand',
-    blurb: 'The at-home version of a $200 facial. Highest-commission item here.',
-    price: 69.99,
-    compareAt: 119.99,
-    category: 'Beauty',
+    id: 'snail-mucin',
+    name: 'Snail Mucin Repair Essence',
+    blurb: 'The 96% essence that fixed everyone\'s texture. Cult product, repeat buy.',
+    price: 24.99,
+    category: 'Skincare',
     retailer: 'TikTok Shop',
     affiliateUrl: '',
-    emoji: '✨',
+    emoji: '🐌',
     trending: true,
     commissionPct: 18,
   },
   {
-    id: 'bond-repair-serum',
-    name: 'Bond-Repair Hair Serum',
-    blurb: 'Rebuilds bleach-fried hair in about three washes. Repeat-buy product.',
-    price: 32.99,
-    category: 'Beauty',
+    id: 'vitamin-c-serum',
+    name: 'Vitamin C Brightening Serum',
+    blurb: 'Fades dark spots in about six weeks. Your highest-commission item.',
+    price: 28.99,
+    compareAt: 44.99,
+    category: 'Skincare',
     retailer: 'TikTok Shop',
     affiliateUrl: '',
-    emoji: '💧',
+    emoji: '🍊',
     trending: true,
     commissionPct: 20,
   },
   {
-    id: 'led-vanity-mirror',
-    name: 'LED Vanity Mirror',
-    blurb: 'Three light temperatures, 10x zoom side. Your makeup finally matches outside.',
-    price: 44.99,
-    compareAt: 79.99,
-    category: 'Beauty',
+    id: 'barrier-moisturizer',
+    name: 'Barrier Repair Moisturizer',
+    blurb: 'For skin wrecked by too much actives. Ceramides, no fragrance.',
+    price: 32.99,
+    category: 'Skincare',
     retailer: 'TikTok Shop',
     affiliateUrl: '',
-    emoji: '🪞',
-    commissionPct: 12,
+    emoji: '🧴',
+    commissionPct: 20,
   },
   {
-    id: 'heated-lash-curler',
-    name: 'Heated Eyelash Curler',
-    blurb: 'Holds a curl all day without the clamp crease. Under $25.',
-    price: 24.99,
-    category: 'Beauty',
+    id: 'retinol-night-cream',
+    name: 'Encapsulated Retinol Night Cream',
+    blurb: 'Retinol without the peeling week. Beginner-safe strength.',
+    price: 34.99,
+    compareAt: 54.99,
+    category: 'Skincare',
     retailer: 'TikTok Shop',
     affiliateUrl: '',
-    emoji: '👁️',
-    commissionPct: 15,
+    emoji: '🌙',
+    commissionPct: 18,
+  },
+  {
+    id: 'gel-sunscreen',
+    name: 'Korean Gel Sunscreen SPF50',
+    blurb: 'No white cast, no pilling under makeup. The one people rebuy.',
+    price: 22.99,
+    category: 'Skincare',
+    retailer: 'TikTok Shop',
+    affiliateUrl: '',
+    emoji: '☀️',
+    trending: true,
+    commissionPct: 18,
   },
 
-  // -------------------------------------------------------- Home & Kitchen
+  // -------------------------------------- Home & Kitchen (12-15%)
   {
     id: 'spin-scrubber',
     name: 'Electric Spin Scrubber',
@@ -127,6 +164,17 @@ export const products: Product[] = [
     emoji: '🫧',
     trending: true,
     commissionPct: 15,
+  },
+  {
+    id: 'steam-mop',
+    name: 'Handheld Steam Mop',
+    blurb: 'Chemical-free, kills what a mop just spreads around. Good for pet homes.',
+    price: 64.99,
+    category: 'Home & Kitchen',
+    retailer: 'TikTok Shop',
+    affiliateUrl: '',
+    emoji: '💨',
+    commissionPct: 14,
   },
   {
     id: 'portable-blender',
@@ -146,99 +194,13 @@ export const products: Product[] = [
     price: 27.99,
     compareAt: 49.99,
     category: 'Home & Kitchen',
-    retailer: 'Temu',
+    retailer: 'TikTok Shop',
     affiliateUrl: '',
     emoji: '☕',
-    commissionPct: 10,
-  },
-  {
-    id: 'steam-mop',
-    name: 'Handheld Steam Mop',
-    blurb: 'Chemical-free, kills what a mop just spreads around. Good for pet homes.',
-    price: 64.99,
-    category: 'Home & Kitchen',
-    retailer: 'Amazon',
-    affiliateUrl: '',
-    emoji: '💨',
-    commissionPct: 4,
-  },
-
-  // ------------------------------------------------------------------ Tech
-  {
-    id: 'mini-projector',
-    name: 'Mini Smart Projector',
-    blurb: 'Turns any wall into a 100" screen. The bedroom-ceiling movie setup.',
-    price: 69.99,
-    compareAt: 129.99,
-    category: 'Tech',
-    retailer: 'Temu',
-    affiliateUrl: '',
-    emoji: '📽️',
-    trending: true,
-    commissionPct: 10,
-  },
-  {
-    id: 'wireless-earbuds',
-    name: 'Noise-Cancelling Earbuds',
-    blurb: 'The $200 sound at a quarter of it. 30-hour case, actual ANC.',
-    price: 49.99,
-    compareAt: 89.99,
-    category: 'Tech',
-    retailer: 'TikTok Shop',
-    affiliateUrl: '',
-    emoji: '🎧',
     commissionPct: 12,
   },
-  {
-    id: 'sunrise-alarm',
-    name: 'Sunrise Alarm Clock',
-    blurb: 'Wakes you with light instead of panic. Genuinely changes winter mornings.',
-    price: 39.99,
-    category: 'Tech',
-    retailer: 'Amazon',
-    affiliateUrl: '',
-    emoji: '🌄',
-    commissionPct: 4,
-  },
 
-  // --------------------------------------------------------------- Fitness
-  {
-    id: 'massage-gun',
-    name: 'Deep Tissue Massage Gun',
-    blurb: 'Six heads, quiet motor. Cheaper than one physio appointment.',
-    price: 59.99,
-    compareAt: 99.99,
-    category: 'Fitness',
-    retailer: 'TikTok Shop',
-    affiliateUrl: '',
-    emoji: '🔫',
-    trending: true,
-    commissionPct: 15,
-  },
-  {
-    id: 'adjustable-dumbbell',
-    name: 'Adjustable Dumbbell (25lb)',
-    blurb: 'Five weights in one. Replaces a whole rack in a small apartment.',
-    price: 74.99,
-    category: 'Fitness',
-    retailer: 'Amazon',
-    affiliateUrl: '',
-    emoji: '🏋️',
-    commissionPct: 4,
-  },
-  {
-    id: 'smart-jump-rope',
-    name: 'Smart Jump Rope',
-    blurb: 'Counts jumps and calories to an app. Cordless mode for low ceilings.',
-    price: 29.99,
-    category: 'Fitness',
-    retailer: 'AliExpress',
-    affiliateUrl: '',
-    emoji: '🪢',
-    commissionPct: 8,
-  },
-
-  // ------------------------------------------------------------------ Pets
+  // ------------------------------------------------ Pets (12-14%)
   {
     id: 'pet-fountain',
     name: 'Pet Water Fountain',
@@ -265,7 +227,7 @@ export const products: Product[] = [
     commissionPct: 12,
   },
 
-  // ------------------------------------------------------------------- Car
+  // ------------------------------------------------- Car (12%)
   {
     id: 'tire-inflator',
     name: 'Cordless Tire Inflator',
@@ -285,12 +247,122 @@ export const products: Product[] = [
     blurb: 'Brushes, cleaner, and the vent tool. Detailer results in your driveway.',
     price: 34.99,
     category: 'Car',
-    retailer: 'Temu',
+    retailer: 'TikTok Shop',
     affiliateUrl: '',
     emoji: '🧽',
+    commissionPct: 12,
+  },
+
+  // --------------------------------------------- Fitness (10%)
+  {
+    id: 'adjustable-dumbbell',
+    name: 'Adjustable Dumbbell (25lb)',
+    blurb: 'Five weights in one. Replaces a whole rack in a small apartment.',
+    price: 74.99,
+    category: 'Fitness',
+    retailer: 'TikTok Shop',
+    affiliateUrl: '',
+    emoji: '🏋️',
     commissionPct: 10,
+  },
+  {
+    id: 'smart-jump-rope',
+    name: 'Smart Jump Rope',
+    blurb: 'Counts jumps and calories to an app. Cordless mode for low ceilings.',
+    price: 29.99,
+    category: 'Fitness',
+    retailer: 'TikTok Shop',
+    affiliateUrl: '',
+    emoji: '🪢',
+    commissionPct: 10,
+  },
+
+  // ===========================================================
+  // GROUP 2 — BLOCKED on your TikTok tier. Routed elsewhere so
+  // they stay on the site. Move them back when they unlock.
+  // ===========================================================
+
+  {
+    id: 'red-light-wand',
+    name: 'Red Light Therapy Wand',
+    blurb: 'The at-home version of a $200 facial. Pairs with your skincare posts.',
+    price: 69.99,
+    compareAt: 119.99,
+    category: 'Skincare',
+    retailer: 'Temu',
+    affiliateUrl: '',
+    emoji: '✨',
+    commissionPct: 10,
+    tiktokBlocked: true,
+  },
+  {
+    id: 'led-vanity-mirror',
+    name: 'LED Vanity Mirror',
+    blurb: 'Three light temperatures, 10x zoom side. Your makeup finally matches outside.',
+    price: 44.99,
+    compareAt: 79.99,
+    category: 'Skincare',
+    retailer: 'Temu',
+    affiliateUrl: '',
+    emoji: '🪞',
+    commissionPct: 10,
+    tiktokBlocked: true,
+  },
+  {
+    id: 'massage-gun',
+    name: 'Deep Tissue Massage Gun',
+    blurb: 'Six heads, quiet motor. Cheaper than one physio appointment.',
+    price: 59.99,
+    compareAt: 99.99,
+    category: 'Fitness',
+    retailer: 'Temu',
+    affiliateUrl: '',
+    emoji: '🔫',
+    commissionPct: 10,
+    tiktokBlocked: true,
+  },
+  {
+    id: 'mini-projector',
+    name: 'Mini Smart Projector',
+    blurb: 'Turns any wall into a 100" screen. The bedroom-ceiling movie setup.',
+    price: 69.99,
+    compareAt: 129.99,
+    category: 'Tech',
+    retailer: 'Temu',
+    affiliateUrl: '',
+    emoji: '📽️',
+    commissionPct: 10,
+    tiktokBlocked: true,
+  },
+  {
+    id: 'wireless-earbuds',
+    name: 'Noise-Cancelling Earbuds',
+    blurb: 'The $200 sound at a quarter of it. 30-hour case, actual ANC.',
+    price: 49.99,
+    compareAt: 89.99,
+    category: 'Tech',
+    retailer: 'Temu',
+    affiliateUrl: '',
+    emoji: '🎧',
+    commissionPct: 10,
+    tiktokBlocked: true,
+  },
+  {
+    id: 'sunrise-alarm',
+    name: 'Sunrise Alarm Clock',
+    blurb: 'Wakes you with light instead of panic. Genuinely changes winter mornings.',
+    price: 39.99,
+    category: 'Tech',
+    retailer: 'Amazon',
+    affiliateUrl: '',
+    emoji: '🌄',
+    commissionPct: 4,
+    tiktokBlocked: true,
   },
 ]
 
 /** Products that are safe to show publicly (i.e. have a real link). */
 export const liveProducts = products.filter((p) => p.affiliateUrl.trim() !== '')
+
+/** Products you can actually promote on TikTok Shop right now. */
+export const tiktokEligible = products.filter((p) => !p.tiktokBlocked)

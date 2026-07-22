@@ -79,19 +79,40 @@ for (const visitors of MONTHLY_VISITORS) {
   )
 }
 
-// The number that actually matters: what it takes to hit a real target.
-const TARGET = 1_000
-const visitorsNeeded = Math.round(
-  TARGET / (CLICK_THROUGH_RATE * CONVERSION_RATE * perSale),
-)
+// ---------------------------------------------------------------------------
+// The two targets that matter — and they are very different sizes.
+// ---------------------------------------------------------------------------
+
+const visitorsFor = (dollars, perUnit) =>
+  Math.round(dollars / (CLICK_THROUGH_RATE * CONVERSION_RATE * perUnit))
+
+// GMV = gross sales you generate, NOT your cut. This is what TikTok Shop
+// measures for tier promotion. Silver = $1,000/mo GMV, which unlocks the
+// "Request Sample" button so you stop buying products out of pocket.
+const gmvVisitors = visitorsFor(1_000, avgPrice)
+const gmvSales = Math.ceil(1_000 / avgPrice)
+
+// Your actual take-home target.
+const incomeVisitors = visitorsFor(1_000, perSale)
 
 console.log(`
   ${'─'.repeat(52)}
-  To clear ${money(TARGET)}/month you need roughly
-  ${visitorsNeeded.toLocaleString()} visitors/month — about ${Math.round(visitorsNeeded / 30).toLocaleString()}/day.
+  TWO DIFFERENT $1,000s — don't confuse them
+  ${'─'.repeat(52)}
 
-  That is the whole game. The site is not the hard part;
-  getting those visitors is. Organic TikTok/Reels is the
-  only channel where that math works at a ${money(perSale)} commission —
-  paid ads cost more per click than you earn per sale.
+  $1,000 GMV  (TikTok Silver tier → unlocks free samples)
+    ${gmvSales} sales · ~${gmvVisitors.toLocaleString()} visits/mo · ~${Math.round(gmvVisitors / 30).toLocaleString()}/day
+    Your commission on that: ${money(1_000 * (avgRate / 100))}
+
+  $1,000 IN YOUR POCKET
+    ${Math.ceil(1_000 / perSale)} sales · ~${incomeVisitors.toLocaleString()} visits/mo · ~${Math.round(incomeVisitors / 30).toLocaleString()}/day
+
+  The first is ${(incomeVisitors / gmvVisitors).toFixed(1)}x easier and is the right
+  month-one goal. Samples are worth more than the cash
+  right now because they remove your cost of content.
+  ${'─'.repeat(52)}
+
+  Paid ads still don't work here: a click costs $0.50-$2.00
+  and you earn ${money(perSale)} per sale. AI ad tools generate the
+  creative, not the placement — you still fund the spend.
 `)
