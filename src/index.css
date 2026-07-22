@@ -1,0 +1,36 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-ink: oklch(0.18 0.02 280);
+  --color-ink-soft: oklch(0.48 0.02 280);
+  --color-hot: oklch(0.65 0.23 12);
+  --color-hot-deep: oklch(0.55 0.22 12);
+  --color-surface: oklch(0.99 0.004 280);
+  --color-line: oklch(0.91 0.008 280);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* Stop iOS Safari bouncing the page under the sticky header. */
+  overscroll-behavior-y: none;
+}
+
+/* Respect users who've asked their OS to reduce motion. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
