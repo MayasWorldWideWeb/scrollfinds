@@ -21,22 +21,35 @@ TikTok doesn't publish the exact quality formula, but the consistent signals are
 
 ---
 
-## Your money lane: skincare
+## Your money lane: skincare — split two ways
 
-Your tier blocks beauty devices, health devices, and electronics — but **skincare is open, and it's the best category on the platform anyway:**
+Your tier blocks beauty devices, health devices, and electronics. Skincare is open, and it's the best category on the platform anyway: people **rebuy** it (a scrubber sells once; a balm sells every 8 weeks, compounding GMV with no new traffic), and before/after is the most-watched format on TikTok.
 
-- Pays **18–20%**, the highest rates in your catalog
-- **People rebuy it.** A cleaning gadget sells once; a serum sells every 8 weeks. Repeat purchases compound your GMV without new traffic.
-- Before/after content is the single most-watched format on TikTok
+But not all skincare pays the same, so the catalog is deliberately split:
 
-Eleven of your 21 products are TikTok-eligible. Five are skincare. **Lead with those.**
+**HERO — medicube.** The PDRN Pink Collagen Multi Balm was the **#1 best-selling product on all of TikTok Shop US in Q2 2026** ($16.99M), and medicube held three simultaneous top-10 spots. Demand is already built; you're not convincing anyone the product is good, just that they should get it from you. These convert far better than anything else you could post.
 
-The six blocked products (red light wand, vanity mirror, massage gun, projector, earbuds, sunrise alarm) still live on the site, routed to Temu/Amazon. You just can't make TikTok Shop content about them. Don't waste videos there.
+**MARGIN — indie skincare (18–20%).** Vitamin C serum, barrier moisturizer, sunscreen. Less built-in demand, roughly double the commission.
+
+### The tradeoff, stated plainly
+
+**Big brands don't need to pay creators much.** I've modelled medicube at a conservative **10%** vs 18–20% for indie products — which dropped the catalog average from 13% to 12%. That guess could be wrong in either direction. **Check your actual rate in the TikTok Shop affiliate dashboard and correct the `commissionPct` values**, because `npm run earnings` is only as honest as what you feed it.
+
+Two things work in medicube's favour anyway:
+
+1. **The earnings model assumes a flat 2% conversion for every product, which understates hero items badly.** A proven #1 seller converts several times better than an unknown serum. Lower rate × much higher conversion likely still wins.
+2. Sets like Glass Glow (~$60) lift your average order value, and GMV is what tier promotion measures.
+
+**The catch: saturation.** The #1 product on the platform is also the one every creator is filming. You will not out-produce them at 1,665 followers. What you *can* do is be more honest than them — most Medicube content is a 12-second unboxing. Real skin, real weeks, real lighting beats that, and it's the same thing that earns the "good quality" rating Spotlight needs.
+
+Use medicube to convert and to hit GMV. Use indie products to actually make money. Post both.
+
+The six blocked products (red light wand, vanity mirror, massage gun, projector, earbuds, sunrise alarm) still live on the site, routed to Temu/Amazon. You just can't make TikTok Shop content about them — don't waste videos there.
 
 ## The target that matters
 
 ```
-$1,000 GMV = 22 sales = ~727 site visits/day
+$1,000 GMV = 23 sales = ~740 site visits/day
 ```
 
 That's Silver tier, which unlocks the **Request Sample** button — no more buying products out of pocket. Your commission at $1k GMV is only ~$130, but the samples are worth more than the cash right now because they delete your cost of making content.
@@ -60,8 +73,8 @@ Link to the site root, not Linktree — every extra tap loses ~40% of clicks. Ne
 
 | # | Format | Hook | Products |
 |---|---|---|---|
-| 1 | **Skin progress** | *(start on the close-up)* "Three weeks of the same two products" | Vitamin C, retinol, snail mucin |
-| 2 | **Routine order** | "You're using these in the wrong order" | All five skincare |
+| 1 | **Skin progress** | *(start on the close-up)* "Three weeks of the same two products" | Multi Balm, gel mask, Vitamin C |
+| 2 | **Routine order** | "You're using these in the wrong order" | All seven skincare |
 | 3 | **Satisfying clean** | *(start mid-scrub)* "I put this off for four months" | Spin scrubber, steam mop, detailing kit, grooming vac |
 | 4 | **Problem → solve** | "If your [X] does this, you need this" | Tire inflator, pet fountain, frother, dumbbell |
 
@@ -75,18 +88,18 @@ Post 11am–1pm or 7–9pm. Rest days are deliberate: use them to film the next 
 
 | Day | Video | Format |
 |---|---|---|
-| 1 | Snail mucin — texture close-up, day 1 baseline | Skin progress |
+| 1 | **Multi Balm — bare-face baseline, no filter** | Skin progress |
 | 2 | Spin scrubber — shower grout | Satisfying |
 | 3 | Vitamin C serum — what it's for, who needs it | Routine |
 | 4 | Pet fountain — cat won't drink from a bowl | Problem→solve |
-| 5 | Full 5-step routine, correct order | Routine |
+| 5 | Full routine, correct order, medicube + serum | Routine |
 | 6 | Steam mop — kitchen floor reveal | Satisfying |
 | 7 | *Rest — batch film days 8–11* | — |
-| 8 | Sunscreen — no white cast test on camera | Routine |
+| 8 | medicube Gel Mask — overnight, before/after morning | Skin progress |
 | 9 | Detailing kit — car vents | Satisfying |
-| 10 | Retinol — "start here, not with the strong stuff" | Routine |
+| 10 | Sunscreen — no white cast test on camera | Routine |
 | 11 | Tire inflator — the 11pm flat | Problem→solve |
-| 12 | **Snail mucin — 2-week progress vs day 1** | Skin progress |
+| 12 | **Multi Balm — 2-week progress vs day 1** | Skin progress |
 | 13 | Grooming vac — fur volume reveal | Satisfying |
 | 14 | *Rest — check Ctrl+Shift+D + TikTok analytics* | — |
 | 15 | Barrier moisturizer — "if your skin stings, stop" | Routine |
@@ -94,12 +107,12 @@ Post 11am–1pm or 7–9pm. Rest days are deliberate: use them to film the next 
 | 17 | Milk frother — morning coffee, cost per cup | Problem→solve |
 | 18 | Vitamin C — 3-week dark spot progress | Skin progress |
 | 19 | Blender — frozen fruit test | Problem→solve |
-| 20 | Sunscreen — reapplying over makeup | Routine |
+| 20 | Zero Pore Pad — pore close-up before/after | Skin progress |
 | 21 | *Rest — cut your two worst products from the site* | — |
-| 22 | **Full-face 3-week progress, all 5 products** | Skin progress |
+| 22 | **Full-face 3-week progress, whole routine** | Skin progress |
 | 23 | Dumbbell — small apartment setup | Problem→solve |
 | 24 | Steam mop — worst floor in the house | Satisfying |
-| 25 | Retinol — the peeling week nobody warns you about | Routine |
+| 25 | Glass Glow Set — is the bundle worth it, honestly | Routine |
 | 26 | Grooming vac — full groom start to finish | Satisfying |
 | 27 | Jump rope — app stats after 3 weeks | Problem→solve |
 | 28 | *Rest — rebuild next month around your top 3* | — |

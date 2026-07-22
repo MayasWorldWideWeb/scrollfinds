@@ -89,54 +89,95 @@ export const products: Product[] = [
   // GROUP 1 — TIKTOK SHOP ELIGIBLE. Your highest-paying lane.
   // ===========================================================
 
-  // ------------------------------------------- Skincare (18-20%)
+  // ---------------------------------------------------- Skincare
+  //
+  // Split on purpose into two kinds of product:
+  //
+  //   HERO (Medicube) — proven demand, converts on its own, but a
+  //   brand this big doesn't need to pay creators much. Commission
+  //   here is a CONSERVATIVE GUESS (10%). Check your real rate in
+  //   the TikTok Shop affiliate dashboard and fix these numbers —
+  //   `npm run earnings` is only as honest as what you put in.
+  //
+  //   MARGIN (indie) — less built-in demand, but 18-20% commission.
+  //   These are what make the account actually pay.
+  //
+  // Prices marked VERIFIED were checked against Ulta on 2026-07-22.
+  // The rest are estimates — confirm before you publish.
+
+  // --- HERO: medicube. #1 brand on TikTok Shop US, Q2 2026 ---
   {
-    id: 'snail-mucin',
-    name: 'Snail Mucin Repair Essence',
-    blurb: 'The 96% essence that fixed everyone\'s texture. Cult product, repeat buy.',
-    price: 24.99,
+    id: 'medicube-multi-balm',
+    name: 'medicube PDRN Pink Collagen Multi Balm',
+    blurb: 'The single best-selling product on TikTok Shop. Sells itself.',
+    price: 22.9, // VERIFIED (Ulta, 0.35oz)
     category: 'Skincare',
     retailer: 'TikTok Shop',
     affiliateUrl: '',
-    emoji: '🐌',
+    emoji: '💗',
     trending: true,
-    commissionPct: 18,
+    commissionPct: 10,
   },
+  {
+    id: 'medicube-gel-mask',
+    name: 'medicube PDRN Pink Collagen Gel Mask (4ct)',
+    blurb: 'Overnight jelly mask. Wake up with the glass-skin look.',
+    price: 19.9, // VERIFIED (Ulta, 4 ct)
+    category: 'Skincare',
+    retailer: 'TikTok Shop',
+    affiliateUrl: '',
+    emoji: '🎀',
+    trending: true,
+    commissionPct: 10,
+  },
+  {
+    id: 'medicube-pore-pad',
+    name: 'medicube Zero Pore Pad 2.0',
+    blurb: 'Exfoliating pads that actually shrink the look of pores.',
+    price: 29.9, // estimate — confirm
+    category: 'Skincare',
+    retailer: 'TikTok Shop',
+    affiliateUrl: '',
+    emoji: '⚪',
+    commissionPct: 10,
+  },
+  {
+    id: 'medicube-glass-glow-set',
+    name: 'medicube Glass Glow Skincare Set',
+    blurb: 'The full routine in one box. Highest order value on the site.',
+    price: 59.9, // estimate — confirm
+    compareAt: 89.9,
+    category: 'Skincare',
+    retailer: 'TikTok Shop',
+    affiliateUrl: '',
+    emoji: '🪞',
+    trending: true,
+    commissionPct: 10,
+  },
+
+  // --- MARGIN: indie skincare, 18-20% ---
   {
     id: 'vitamin-c-serum',
     name: 'Vitamin C Brightening Serum',
-    blurb: 'Fades dark spots in about six weeks. Your highest-commission item.',
+    blurb: 'Fades dark spots in about six weeks. Double the commission of the big brands.',
     price: 28.99,
     compareAt: 44.99,
     category: 'Skincare',
     retailer: 'TikTok Shop',
     affiliateUrl: '',
     emoji: '🍊',
-    trending: true,
     commissionPct: 20,
   },
   {
     id: 'barrier-moisturizer',
     name: 'Barrier Repair Moisturizer',
-    blurb: 'For skin wrecked by too much actives. Ceramides, no fragrance.',
+    blurb: 'For skin wrecked by too many actives. Ceramides, no fragrance.',
     price: 32.99,
     category: 'Skincare',
     retailer: 'TikTok Shop',
     affiliateUrl: '',
     emoji: '🧴',
     commissionPct: 20,
-  },
-  {
-    id: 'retinol-night-cream',
-    name: 'Encapsulated Retinol Night Cream',
-    blurb: 'Retinol without the peeling week. Beginner-safe strength.',
-    price: 34.99,
-    compareAt: 54.99,
-    category: 'Skincare',
-    retailer: 'TikTok Shop',
-    affiliateUrl: '',
-    emoji: '🌙',
-    commissionPct: 18,
   },
   {
     id: 'gel-sunscreen',
@@ -147,7 +188,6 @@ export const products: Product[] = [
     retailer: 'TikTok Shop',
     affiliateUrl: '',
     emoji: '☀️',
-    trending: true,
     commissionPct: 18,
   },
 
